@@ -16,6 +16,7 @@ export class RecipeService {
       ]
     ), new Recipe(
       'A Test Recipe 2',
+
       'This is simply a test',
       'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/9/26/0/FNK_Tuscan-Chicken-Skillet_H2_s4x3.jpg.rend.hgtvcom.616.462.suffix/1537973085542.jpeg',
       [
@@ -27,9 +28,13 @@ export class RecipeService {
   constructor(private shoppingListService: ShoppingListService) {
   }
 
-  getRecipes() {
+  getRecipes(): Recipe[] {
     //return the exact copy of recipes array
     return this.recipes.slice();
+  }
+
+  getRecipe(id: number): Recipe {
+    return {...this.recipes[id - 1]};
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
